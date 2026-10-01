@@ -1,0 +1,246 @@
+{
+  "total": 4917,
+  "categories": [
+    {
+      "id": "AI Agent",
+      "label": "AI Agent",
+      "count": 2465
+    },
+    {
+      "id": "HTML",
+      "label": "HTML",
+      "count": 66
+    },
+    {
+      "id": "Java",
+      "label": "Java",
+      "count": 927
+    },
+    {
+      "id": "JavaScript",
+      "label": "JavaScript",
+      "count": 281
+    },
+    {
+      "id": "React",
+      "label": "React",
+      "count": 673
+    },
+    {
+      "id": "Vue",
+      "label": "Vue",
+      "count": 362
+    },
+    {
+      "id": "计算机网络",
+      "label": "计算机网络",
+      "count": 22
+    },
+    {
+      "id": "面经考点",
+      "label": "面经考点",
+      "count": 109
+    },
+    {
+      "id": "项目与行为面试",
+      "label": "项目与行为面试",
+      "count": 12
+    }
+  ],
+  "collections": [
+    {
+      "id": "Agent Runtime技术冲刺",
+      "label": "Agent Runtime技术冲刺",
+      "count": 24
+    },
+    {
+      "id": "Agent社区整理200题",
+      "label": "Agent社区整理200题",
+      "count": 200
+    },
+    {
+      "id": "Claude SDK与云端Agent20题",
+      "label": "Claude SDK与云端Agent20题",
+      "count": 20
+    },
+    {
+      "id": "PayerMax-AI-Agent-面试题与参考回答-匿名候选人",
+      "label": "PayerMax-AI-Agent-面试题与参考回答-匿名候选人",
+      "count": 43
+    },
+    {
+      "id": "PayerMax个人练习",
+      "label": "PayerMax个人练习",
+      "count": 54
+    },
+    {
+      "id": "PayerMax固定题与补充809题",
+      "label": "PayerMax固定题与补充809题",
+      "count": 729
+    },
+    {
+      "id": "PayerMax社区精选",
+      "label": "PayerMax社区精选",
+      "count": 24
+    },
+    {
+      "id": "Pi / TabTin业务场景",
+      "label": "Pi / TabTin业务场景",
+      "count": 38
+    },
+    {
+      "id": "Pi / TabTin工程专题78题",
+      "label": "Pi / TabTin工程专题78题",
+      "count": 78
+    },
+    {
+      "id": "RAG与知识技术冲刺",
+      "label": "RAG与知识技术冲刺",
+      "count": 24
+    },
+    {
+      "id": "React开源445题",
+      "label": "React开源445题",
+      "count": 445
+    },
+    {
+      "id": "TabTin-React-Electron-面试问答详解",
+      "label": "TabTin-React-Electron-面试问答详解",
+      "count": 18
+    },
+    {
+      "id": "TabTin-专属面试题-技术专家",
+      "label": "TabTin-专属面试题-技术专家",
+      "count": 28
+    },
+    {
+      "id": "TabTin-专属面试题-简历与负责人面",
+      "label": "TabTin-专属面试题-简历与负责人面",
+      "count": 25
+    },
+    {
+      "id": "TabTin-完整面试作战图",
+      "label": "TabTin-完整面试作战图",
+      "count": 19
+    },
+    {
+      "id": "TabTin-源码命中型面试问答",
+      "label": "TabTin-源码命中型面试问答",
+      "count": 12
+    },
+    {
+      "id": "全栈开源3386题",
+      "label": "全栈开源3386题",
+      "count": 3113
+    },
+    {
+      "id": "岗位场景设计",
+      "label": "岗位场景设计",
+      "count": 12
+    },
+    {
+      "id": "岗位额外练习",
+      "label": "岗位额外练习",
+      "count": 6
+    },
+    {
+      "id": "平台技术冲刺",
+      "label": "平台技术冲刺",
+      "count": 24
+    },
+    {
+      "id": "开源综合题库",
+      "label": "开源综合题库",
+      "count": 3113
+    },
+    {
+      "id": "归档题库 · 旧版独有",
+      "label": "归档题库 · 旧版独有",
+      "count": 226
+    },
+    {
+      "id": "技术追问与Java120题",
+      "label": "技术追问与Java120题",
+      "count": 284
+    },
+    {
+      "id": "牛客外链索引",
+      "label": "牛客外链索引",
+      "count": 158
+    },
+    {
+      "id": "简历筛选社区题库",
+      "label": "简历筛选社区题库",
+      "count": 78
+    },
+    {
+      "id": "缓存问题专项",
+      "label": "缓存问题专项",
+      "count": 5
+    },
+    {
+      "id": "赛文X面经109篇",
+      "label": "赛文X面经109篇",
+      "count": 109
+    }
+  ],
+  "banks": [
+    {
+      "id": "b48c8be327",
+      "label": "AI Agent",
+      "count": 2465,
+      "path": "data/bank-b48c8be327.json"
+    },
+    {
+      "id": "07239dbd2a",
+      "label": "HTML",
+      "count": 66,
+      "path": "data/bank-07239dbd2a.json"
+    },
+    {
+      "id": "c1ba60ce13",
+      "label": "Java",
+      "count": 927,
+      "path": "data/bank-c1ba60ce13.json"
+    },
+    {
+      "id": "b27ad06d12",
+      "label": "JavaScript",
+      "count": 281,
+      "path": "data/bank-b27ad06d12.json"
+    },
+    {
+      "id": "01fad993ff",
+      "label": "React",
+      "count": 673,
+      "path": "data/bank-01fad993ff.json"
+    },
+    {
+      "id": "b111a2a218",
+      "label": "Vue",
+      "count": 362,
+      "path": "data/bank-b111a2a218.json"
+    },
+    {
+      "id": "38746af84a",
+      "label": "计算机网络",
+      "count": 22,
+      "path": "data/bank-38746af84a.json"
+    },
+    {
+      "id": "71952a2c3d",
+      "label": "面经考点",
+      "count": 109,
+      "path": "data/bank-71952a2c3d.json"
+    },
+    {
+      "id": "f8968898bd",
+      "label": "项目与行为面试",
+      "count": 12,
+      "path": "data/bank-f8968898bd.json"
+    }
+  ],
+  "answerCount": 4677,
+  "answerMissing": 240,
+  "answerExternalOnly": 158
+}

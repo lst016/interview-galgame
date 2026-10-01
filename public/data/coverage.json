@@ -1,0 +1,222 @@
+{
+  "inputFiles": 15,
+  "inputEntries": 9100,
+  "outputQuestions": 4917,
+  "mergedEntries": 4183,
+  "archivedQuestions": 226,
+  "answerMissing": 240,
+  "answerExternalOnly": 158,
+  "privacyRedactedQuestions": 307,
+  "removedPrivacyParagraphs": 722,
+  "inventory": [
+    {
+      "file": "output/unified-interview-bank/questions.json",
+      "records": 3802,
+      "collection": "最新统一题库",
+      "priority": 0
+    },
+    {
+      "file": "output/full-stack-question-bank/questions.json",
+      "records": 3386,
+      "collection": "全栈开源3386题",
+      "priority": -2
+    },
+    {
+      "file": "output/open-react-question-bank/questions.json",
+      "records": 445,
+      "collection": "React开源445题",
+      "priority": -2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/原题重建/原题与补充数据.json",
+      "records": 809,
+      "collection": "PayerMax固定题与补充809题",
+      "priority": 1
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/原题重建/我问过的技术题-合并数据.json",
+      "records": 289,
+      "collection": "技术追问与Java120题",
+      "priority": 4
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/题目数据.json",
+      "records": 54,
+      "collection": "PayerMax个人练习",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/community.json",
+      "records": 24,
+      "collection": "PayerMax社区精选",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/scenarios.json",
+      "records": 12,
+      "collection": "岗位场景设计",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/extras.json",
+      "records": 6,
+      "collection": "岗位额外练习",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/sprint-runtime.json",
+      "records": 24,
+      "collection": "Agent Runtime技术冲刺",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/sprint-knowledge.json",
+      "records": 24,
+      "collection": "RAG与知识技术冲刺",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-personal-interview-2026-09-22/sprint-platform.json",
+      "records": 24,
+      "collection": "平台技术冲刺",
+      "priority": 2
+    },
+    {
+      "file": "output/payermax-cloud-agent-followup-2026-09-24/一面反馈专项-Claude SDK与云端Agent.md",
+      "records": 20,
+      "collection": "Claude SDK与云端Agent20题",
+      "priority": 5
+    },
+    {
+      "file": "output/tabtin-harness-course/业务场景面试题-含追问与答案.md",
+      "records": 18,
+      "collection": "Pi / TabTin业务场景",
+      "priority": 2
+    },
+    {
+      "file": "output/unified-interview-bank/缓存常见问题-原因与解决方案.md",
+      "records": 5,
+      "collection": "缓存问题专项",
+      "priority": 4
+    },
+    {
+      "file": "output/unified-interview-bank/questions.json#linkOnly",
+      "records": 158,
+      "collection": "牛客外链索引",
+      "priority": 0
+    }
+  ],
+  "upstreamUnifiedInventory": [
+    {
+      "file": "output/full-stack-question-bank/questions.json",
+      "count": 3386,
+      "method": "主库结构化题目；原文与代码/许可原样保留"
+    },
+    {
+      "file": "output/open-react-question-bank/questions.json",
+      "count": 445,
+      "method": "较早导出；同题同答与主库合并"
+    },
+    {
+      "file": "tmp/github-interview-20260919/agent/questions.json",
+      "count": 25,
+      "method": "先前按简历筛选的社区问答"
+    },
+    {
+      "file": "tmp/github-interview-20260919/electron/questions.json",
+      "count": 14,
+      "method": "先前按简历筛选的社区问答"
+    },
+    {
+      "file": "tmp/github-interview-20260919/network/questions.json",
+      "count": 10,
+      "method": "先前按简历筛选的社区问答"
+    },
+    {
+      "file": "tmp/github-interview-20260919/react/questions.json",
+      "count": 30,
+      "method": "先前按简历筛选的社区问答"
+    },
+    {
+      "file": "output/tabtin-harness-course/enhancements/runtime-review.json",
+      "count": 6,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "output/tabtin-harness-course/enhancements/session-review.json",
+      "count": 6,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "output/tabtin-harness-course/enhancements/tools-review.json",
+      "count": 6,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "output/tabtin-harness-course/expanded/runtime-questions.json",
+      "count": 7,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "output/tabtin-harness-course/expanded/session-questions.json",
+      "count": 7,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "output/tabtin-harness-course/expanded/tools-questions.json",
+      "count": 6,
+      "method": "结构化主问题；保留全部追问、回答、评分与源码定位"
+    },
+    {
+      "file": "agent-interview-qa-community.md",
+      "count": 200,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/TabTin-专属面试题-技术专家.md",
+      "count": 28,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/TabTin-专属面试题-简历与负责人面.md",
+      "count": 25,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/TabTin-源码命中型面试问答.md",
+      "count": 12,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/TabTin-React-Electron-面试问答详解.md",
+      "count": 18,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/PayerMax-AI-Agent-面试题与参考回答-匿名候选人.md",
+      "count": 43,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/md/TabTin-完整面试作战图.md",
+      "count": 19,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/tabtin-harness-course/工程专题面试卡-78题.md",
+      "count": 78,
+      "method": "按问题标题边界提取；保留该题全部子段落与追问"
+    },
+    {
+      "file": "output/saiwen-interview-study/面经考点.json",
+      "count": 109,
+      "method": "初始导入109篇面经摘要；后续已核读对应原帖，转述题目并提供原创参考答案，保留逐项覆盖与来源。"
+    }
+  ],
+  "excluded": [
+    "实际面试逐字记录、简历原文件、主张证据账本、日报、源代码仓库、临时批次、历史备份、重复ZIP与云端包镜像",
+    "未采集题干的牛客158条仅作为外链索引",
+    "不发布原始sourceLocalPath/sourceFile/用户回答等字段"
+  ],
+  "deduplication": "类别+规范化题目及统一库alias/source ID关联；同题保留全部集合与源文件；最新补答优先。不把完整章节内追问拆成伪独立原题。"
+}
