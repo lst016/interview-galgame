@@ -2,18 +2,29 @@ import React,{useEffect,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import {filterQuestions,pageQuestions,safeExternalUrl,nextQuestion,personalTemplate,restoreSaved} from './logic.js';
+import {filterQuestions,pageQuestions,safeExternalUrl,nextQuestion,personalTemplate,restoreSaved,loadQuestionBanks} from './logic.js';
 import './style.css';
 const BASE=import.meta.env.BASE_URL;
 const KEY='interview-galgame-v1';
 function readSaved(){try{return restoreSaved(localStorage.getItem(KEY));}catch{return {};}}
 function App(){
  const [saved,setSaved]=useState(readSaved),[storageError,setStorageError]=useState('');
- const [questions,setQuestions]=useState([]),[catalog,setCatalog]=useState(null),[error,setError]=useState(''),[loading,setLoading]=useState(true);
+ const [questions,setQuestions]=useState([]),[catalog,setCatalog]=useState(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[bankLoad,setBankLoad]=useState({done:0,total:0}),[loadWarning,setLoadWarning]=useState('');
  const [view,setView]=useState('library'),[activeId,setActiveId]=useState(saved.activeId||''),[revealed,setRevealed]=useState(false),[notice,setNotice]=useState('');
  const [filters,setFilters]=useState({search:'',category:'',collection:'',status:''}),[page,setPage]=useState(1);
  const progress=saved.progress||{};
- useEffect(()=>{let canceled=false;(async()=>{try{const response=await fetch(`${BASE}data/catalog.json`);if(!response.ok)throw Error('题库目录加载失败');const c=await response.json();if(!Array.isArray(c.banks))throw Error('题库目录格式有误');const chunks=await Promise.all(c.banks.map(async b=>{const path=b.path.replace(/^\/?(?:public\/)?(?:data\/)?/,'');const r=await fetch(`${BASE}data/${path}`);if(!r.ok)throw Error(`无法读取题库：${b.label}`);const d=await r.json();if(!Array.isArray(d.questions))throw Error(`题库格式有误：${b.label}`);return d.questions;}));if(!canceled){setQuestions(chunks.flat());setCatalog(c);}}catch(e){if(!canceled)setError(e.message);}finally{if(!canceled)setLoading(false);}})();return()=>{canceled=true;};},[]);
+ useEffect(()=>{let canceled=false;(async()=>{try{
+  const response=await fetch(`${BASE}data/catalog.json`,{signal:AbortSignal.timeout(30000)});
+  if(!response.ok)throw Error('题库目录加载失败');
+  const c=await response.json();if(!Array.isArray(c.banks)||!c.banks.length)throw Error('题库目录格式有误');
+  if(canceled)return;setCatalog(c);setBankLoad({done:0,total:c.banks.length});
+  const chunks=[];
+  const results=await loadQuestionBanks(c.banks,BASE,(qs,index)=>{if(canceled)return;chunks[index]=qs;setQuestions(chunks.flat());setLoading(false);setBankLoad(v=>({...v,done:v.done+1}));});
+  if(canceled)return;
+  const failed=results.filter(r=>r.status==='rejected');
+  if(failed.length===results.length)throw Error('题库下载失败或超时，请检查网络后重新加载。');
+  if(failed.length)setLoadWarning(`${failed.length} 个题库未能加载，已加载的题目仍可练习。请重新加载以重试。`);
+ }catch(e){if(!canceled)setError(e.name==='TimeoutError'?'题库连接超时，请重新加载。':e.message);}finally{if(!canceled)setLoading(false);}})();return()=>{canceled=true;};},[]);
  useEffect(()=>{try{localStorage.setItem(KEY,JSON.stringify({...saved,activeId}));setStorageError('');}catch{setStorageError('浏览器未能保存进度；请勿关闭当前页面。');}},[saved,activeId]);
  const filtered=filterQuestions(questions,filters,progress),pages=Math.max(1,Math.ceil(filtered.length/12));
  const active=questions.find(q=>q.id===activeId),record=progress[activeId]||{};
@@ -25,7 +36,7 @@ function App(){
  const mastered=questions.filter(q=>progress[q.id]?.status==='mastered').length,review=questions.filter(q=>progress[q.id]?.status==='review').length;
  function showAnswer(){setRevealed(true);setNotice('');}
  return <><header><a className="brand" href="#" onClick={e=>{e.preventDefault();setView('library');}}>✦ 面试自习室 <small>GALGAME</small></a><nav><button className={view==='library'?'selected':''} onClick={()=>setView('library')}>题库</button><button disabled={!active} onClick={()=>{setView('learn');setRevealed(false);}}>继续学习</button></nav></header>
- <main>{storageError&&<p role="alert" className="warning">{storageError}</p>}{loading?<div className="empty">正在整理自习室的题目…</div>:error?<div className="empty" role="alert"><h1>题库暂时没有加载成功</h1><p>{error}</p><button onClick={()=>location.reload()}>重新加载</button></div>:view==='library'?<>
+ <main>{loadWarning&&<p role="alert" className="warning">{loadWarning}<button onClick={()=>location.reload()}>重新加载</button></p>}{bankLoad.total>bankLoad.done&&!loadWarning&&!error&&<p role="status">已加载 {bankLoad.done} / {bankLoad.total} 个题库，题目会陆续显示。</p>}{storageError&&<p role="alert" className="warning">{storageError}</p>}{loading?<div className="empty">正在整理自习室的题目…</div>:error?<div className="empty" role="alert"><h1>题库暂时没有加载成功</h1><p>{error}</p><button onClick={()=>location.reload()}>重新加载</button></div>:view==='library'?<>
  <section className="hero"><div><p className="eyebrow">夜间自习室 · 和澄夏一起练习</p><h1>把答案说出来，<br/>再把它变成自己的。</h1><p>看题、查看完整答案，随时标记和复习。无需模型 Key，预置题库随时练习。</p><button className="primary" disabled={!questions.length} onClick={()=>start(active||filtered[0]||questions[0],!!active)}>{active?'接着上次的题目':'开始今晚的练习'} →</button></div><img src={`${BASE}assets/chengxia.svg`} alt="自习伙伴澄夏"/></section>
  <div className="stats"><span><b>{questions.filter(q=>q.collection!=='牛客外链索引').length}</b> 道题目 <small>另含 {questions.filter(q=>q.collection==='牛客外链索引').length} 条来源索引</small></span><span><b>{collections.length}</b> 个题库</span><span><b>{mastered}</b> 已掌握</span><span><b>{review}</b> 待复习</span></div>
  <section className="library"><div className="section-heading"><h2>全部题库</h2><span>{filtered.length} 条符合条件</span></div><div className="filters"><label className="search">搜索题目或答案<input value={filters.search} onChange={e=>changeFilter('search',e.target.value)} placeholder="例如：RAG、并发、项目经历"/></label><label>分类<select value={filters.category} onChange={e=>changeFilter('category',e.target.value)}><option value="">全部分类</option>{categories.map(c=><option key={c}>{c}</option>)}</select></label><label>题库<select value={filters.collection} onChange={e=>changeFilter('collection',e.target.value)}><option value="">全部题库</option>{collections.map(c=><option key={c}>{c}</option>)}</select></label><label>学习状态<select value={filters.status} onChange={e=>changeFilter('status',e.target.value)}><option value="">全部状态</option><option value="new">未标记</option><option value="review">待复习</option><option value="mastered">已掌握</option></select></label></div>

@@ -9,3 +9,14 @@ export function personalTemplate(question) {return `我会先直接回答“${qu
 export function restoreSaved(raw) {
   try {const s=JSON.parse(raw||'{}');if(!s||typeof s!=='object'||Array.isArray(s))return {};const progress={};for(const [id,p] of Object.entries(s.progress||{})){if(!p||typeof p!=='object')continue;progress[id]={draft:typeof p.draft==='string'?p.draft:'',oral:p.oral===true,status:['mastered','review'].includes(p.status)?p.status:'new'};}return {progress,activeId:typeof s.activeId==='string'?s.activeId:'',queueIds:Array.isArray(s.queueIds)?s.queueIds.filter(id=>typeof id==='string'):[]};}catch{return {};}
 }
+
+export async function loadQuestionBanks(banks,base,onChunk,fetcher=fetch){
+ return Promise.allSettled(banks.map(async(bank,index)=>{
+  const path=bank.path.replace(/^\/?(?:public\/)?(?:data\/)?/,'');
+  const response=await fetcher(`${base}data/${path}`,{signal:AbortSignal.timeout(60000)});
+  if(!response.ok)throw Error(`无法读取题库：${bank.label}`);
+  const data=await response.json();
+  if(!Array.isArray(data.questions))throw Error(`题库格式有误：${bank.label}`);
+  onChunk(data.questions,index);return data.questions;
+ }));
+}
