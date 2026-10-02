@@ -16,6 +16,7 @@ test('默认备考题仅含显式筛选的有答案题目，保持原文与来�
  const selection=JSON.parse(readFileSync(new URL('../public/data/role-selection.json',import.meta.url)));
  const bank=JSON.parse(readFileSync(new URL('../public/data/role-questions.json',import.meta.url)));
  assert.deepEqual(bank.questions.map(q=>q.id),selection.questionIds);
- assert.ok(bank.questions.length>100&&bank.questions.length<500);
+ assert.ok(bank.questions.length>100&&bank.questions.length<4000);
+ for(const category of ['JavaScript','React','Vue','Java','计算机网络'])assert.ok(bank.questions.some(q=>q.category===category),category);assert.ok(bank.questions.some(q=>/密码.*加密|JWT.*篡改/.test(q.title)));
  for(const q of bank.questions){assert.ok(!q.answerMissing&&!q.answerExternalOnly);assert.ok(!/预训练|反向传播|梯度下降|LoRA|RLHF|Fusion.in.Decoder/i.test(q.title));assert.ok(q.answerMarkdown||q.answerText);}
 });
