@@ -1,0 +1,1 @@
+{"banks": [{"path": "data/role-questions.json", "label": "我的备考题"}], "totalQuestions": 331, "focus": ["Agent SDK / MCP / 工具与权限", "会话、上下文、持久化与恢复", "客服、Dify、RAG 应用与评测", "React / Electron / TypeScript", "Java 后端、渠道消息与可靠性", "真实项目表达与个人职责"]}
